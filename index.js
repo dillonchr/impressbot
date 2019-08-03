@@ -22,7 +22,7 @@ const printTransaction = (cost, desc) => {
 };
 
 const print = (chunk) => {
-    if (1) {
+    if (0) {
         console.log(chunk);
         return;
     }
@@ -36,6 +36,11 @@ const print = (chunk) => {
     });
 };
 
+const centerInHorizontalLineBreak = (msg) => {
+    const horizontalPadding = (MAX_PRINT_LEN - msg.length) / 2;
+    return repeatLetter('=', Math.floor(horizontalPadding)) + msg + repeatLetter('=', Math.ceil(horizontalPadding));
+};
+
 const printBalanceTomorrow = (bal) => {
     clearTimeout(TOMORROW_TIMEOUT_ID);
     const now = new Date();
@@ -44,9 +49,13 @@ const printBalanceTomorrow = (bal) => {
     tomorrow.setHours(0);
     tomorrow.setMinutes(0);
     tomorrow.setSeconds(0);
+    const delay = tomorrow.getTime() - now.getTime();
+    const statementDate = centerInHorizontalLineBreak(`${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear()}`);
     TOMORROW_TIMEOUT_ID = setTimeout(() => {
-        print(`\n\n${repeatLetter('=', MAX_PRINT_LEN)}\n`);
-    }, tomorrow.getTime() - now.getTime());
+        print(`\n\n${statementDate}\n`);
+        print(printTransaction(`${bal}`, 'Balance'));
+        print(repeatLetter('=', MAX_PRINT_LEN) + repeatLetter('\n', 4));
+    }, 5000);
 };
 
 
