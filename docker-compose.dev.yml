@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  impress:
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    restart: on-failure
+    volumes:
+      - .:/code/
+      - /code/node_modules/

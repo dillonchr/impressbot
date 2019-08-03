@@ -1,0 +1,19 @@
+{
+  "name": "impressbot",
+  "version": "1.0.0",
+  "description": "A discord bot that just prints stuff on a thermal printer",
+  "main": "index.js",
+  "engines": {
+    "node": "7.10.1"
+  },
+  "scripts": {
+    "start": "docker-compose -f docker-compose.dev.yml up --build",
+    "test": "exit 0"
+  },
+  "author": "dillonchr",
+  "license": "GPL-2.0",
+  "dependencies": {
+    "@dillonchr/discordbot": "^1.0.5",
+    "dotenv": "^4.0.0"
+  }
+}

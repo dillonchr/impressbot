@@ -1,0 +1,7 @@
+FROM mhart/alpine-node:10.7.0
+RUN apk update && apk upgrade && apk add git && npm i -g nodemon > /dev/null
+WORKDIR /code/
+COPY package*.json ./
+RUN npm i > /dev/null
+COPY . .
+CMD nodemon index.js
