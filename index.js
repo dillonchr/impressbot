@@ -55,7 +55,7 @@ const printBalanceTomorrow = (bal) => {
         print(`\n\n${statementDate}\n`);
         print(printTransaction(`${bal}`, 'Balance'));
         print(repeatLetter('=', MAX_PRINT_LEN) + repeatLetter('\n', 4));
-    }, 5000);
+    }, delay);
 };
 
 
